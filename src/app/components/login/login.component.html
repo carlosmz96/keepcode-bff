@@ -5,9 +5,9 @@
     </div>
 
     <div class="login-box">
-      <form action="#" method="POST">
-        <input type="text" name="username" placeholder="Nombre de usuario" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
+      <form action="#" method="POST" (submit)="login()">
+        <input type="text" name="email" [(ngModel)]="usuario.email" placeholder="Correo electrónico" required>
+        <input type="password" name="password" [(ngModel)]="usuario.password" placeholder="Contraseña" required>
         <button type="submit">Iniciar sesión</button>
       </form>
     </div>

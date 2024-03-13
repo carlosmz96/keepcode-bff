@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
@@ -12,17 +12,23 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 })
 export class AppComponent {
 
-  userLogged: boolean = false;
+  public userLogged: boolean = false;
 
   constructor(
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {
     this.comprobarUsuario();
   }
 
+  /**
+   * Comprueba si el usuario está logado
+   */
   private comprobarUsuario(): void {
     if (this.cookieService.check('user')) {
       this.userLogged = true;
+    } else {
+      this.router.navigate(['login']);
     }
   }
 
